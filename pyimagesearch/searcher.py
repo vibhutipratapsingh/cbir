@@ -1,5 +1,6 @@
 # import the necessary packages
 import numpy as np
+import cv2 as cv
 import csv
 
 class Searcher:
@@ -22,6 +23,16 @@ class Searcher:
 				# chi-squared distance between the features in our index
 				# and our query features
 				features = [float(x) for x in row[1:]]
+				# d = self.chi2_distance(features, queryFeatures)
+				bf = cv.BFMatcher()
+				matches = bf.knnMatch(des1,des2, k=2)
+				good = []
+				for m,n in matches:
+					print(m)
+					print(n)
+					if m.distance < 0.75*n.distance:
+						good.append([m])
+
 				d = self.chi2_distance(features, queryFeatures)
 
 				# now that we have the distance between the two feature

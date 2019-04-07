@@ -16,7 +16,7 @@ ap.add_argument("-i", "--index", required = True,
 args = vars(ap.parse_args())
 
 # initialize the color descriptor
-cd = ColorDescriptor((8, 12, 3))
+cd = ColorDescriptor()
 
 # open the output index file for writing
 output = open(args["index"], "w")
