@@ -6,7 +6,7 @@ import cv2 as cv
 # import imutils
 
 class ColorDescriptor:
-	def __init__(self, bins):
+	def __init__(self):
 		# store the number of bins for the 3D histogram
 		pass
 

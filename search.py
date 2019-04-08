@@ -18,13 +18,16 @@ ap.add_argument("-r", "--result-path", required = True,
 args = vars(ap.parse_args())
 
 # initialize the image descriptor
-cd = ColorDescriptor((8, 12, 3))
+cd = ColorDescriptor()
 
 # load the query image and describe it
 query = cv2.imread(args["query"])
 features = cd.describe(query)
+# print("VPS:")
+# print(features)
 
 # perform the search
+print(args["index"])
 searcher = Searcher(args["index"])
 results = searcher.search(features)
 

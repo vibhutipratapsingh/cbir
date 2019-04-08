@@ -11,7 +11,7 @@ class Searcher:
 	def search(self, queryFeatures, limit = 10):
 		# initialize our dictionary of results
 		results = {}
-
+		print(queryFeatures)
 		# open the index file for reading
 		with open(self.indexPath) as f:
 			# initialize the CSV reader
@@ -22,10 +22,12 @@ class Searcher:
 				# parse out the image ID and features, then compute the
 				# chi-squared distance between the features in our index
 				# and our query features
-				features = [float(x) for x in row[1:]]
+				# print(row[1:])
+				features = row[1:]
 				# d = self.chi2_distance(features, queryFeatures)
 				bf = cv.BFMatcher()
-				matches = bf.knnMatch(des1,des2, k=2)
+				# matches = bf.knnMatch(des1,des2, k=2)
+				matches = bf.knnMatch(features,queryFeatures, k=2)
 				good = []
 				for m,n in matches:
 					print(m)
